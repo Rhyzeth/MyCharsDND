@@ -14,22 +14,11 @@
             <button class="collapse-btn" onclick="toggleLeftPanel()">☰</button>
             <div class="left-content">
                 <ul>
-                    <li><a href="#" onclick="updateMainContent('Point 1')">Point 1</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 2')">Point 2</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 3')">Point 3</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 4')">Point 4</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 5')">Point 5</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 6')">Point 6</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 7')">Point 7</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 8')">Point 8</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 9')">Point 9</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 10')">Point 10</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 11')">Point 11</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 12')">Point 12</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 13')">Point 13</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 14')">Point 14</a></li>
-                    <li><a href="#" onclick="updateMainContent('Point 15')">Point 15</a></li>
-
+                    <li><a href="#" onclick="sendPointToServer('Point 1')">Point 1</a></li>
+                    <li><a href="#" onclick="sendPointToServer('Point 2')">Point 2</a></li>
+                    <li><a href="#" onclick="sendPointToServer('Point 3')">Point 3</a></li>
+                    <li><a href="#" onclick="sendPointToServer('Point 4')">Point 4</a></li>
+                    <li><a href="#" onclick="sendPointToServer('Point 5')">Point 5</a></li>
                 </ul>
             </div>
         </div>
@@ -44,47 +33,31 @@
             <button class="collapse-btn" onclick="toggleRightPanel()">↔</button>
             <ul id="tile-list">
                 <li>
-                    <a href="#" onclick="updateMainContent('Char1 Info')">
-                        <span class="tile-name">Char1</span>
+                    <a href="#" onclick="updateMainContent('Tile 1 Info')">
+                        <span class="tile-name">Tile 1</span>
                     </a>
-                    <input type="text" class="tile-name-input" value="Char1" onchange="updateTileName(this)">
-                    <input type="number" class="tile-order" value="0" onchange="reorderTiles()">
+                    <input type="text" class="tile-name-input" value="Tile 1" onchange="updateTileName(this)">
+                    <input type="number" class="tile-order" value="1" onchange="reorderTiles()">
                 </li>
-                <li>
-                    <a href="#" onclick="updateMainContent('Char2 Info')">
-                        <span class="tile-name">Char2</span>
-                    </a>
-                    <input type="text" class="tile-name-input" value="Char2" onchange="updateTileName(this)">
-                    <input type="number" class="tile-order" value="0" onchange="reorderTiles()">
-                </li>
-                <li>
-                    <a href="#" onclick="updateMainContent('Char3 Info')">
-                        <span class="tile-name">Char3</span>
-                    </a>
-                    <input type="text" class="tile-name-input" value="Char3" onchange="updateTileName(this)">
-                    <input type="number" class="tile-order" value="0" onchange="reorderTiles()">
-                </li>
-                <li>
-                    <a href="#" onclick="updateMainContent('Char4 Info')">
-                        <span class="tile-name">Char4</span>
-                    </a>
-                    <input type="text" class="tile-name-input" value="Char4" onchange="updateTileName(this)">
-                    <input type="number" class="tile-order" value="0" onchange="reorderTiles()">
-                </li>
-                <li>
-                    <a href="#" onclick="updateMainContent('Char5 Info')">
-                        <span class="tile-name">Char5</span>
-                    </a>
-                    <input type="text" class="tile-name-input" value="Char5" onchange="updateTileName(this)">
-                    <input type="number" class="tile-order" value="0" onchange="reorderTiles()">
-                </li>
+                <!-- More tiles... -->
             </ul>
         </div>
     </div>
 
     <script>
-        function updateMainContent(content) {
-            document.getElementById('main-text').innerText = content;
+        function sendPointToServer(point) {
+            fetch('/get_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ point: point }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('main-text').innerText = data.info;
+            })
+            .catch(error => console.error('Error:', error));
         }
 
         function toggleLeftPanel() {
