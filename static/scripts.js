@@ -13,6 +13,10 @@ function sendPointToServer(point) {
     .catch(error => console.error('Error:', error));
 }
 
+function updateMainContent(content) {
+    document.getElementById('main-text').innerText = content;
+}
+
 function toggleLeftPanel() {
     const panel = document.querySelector('.left-panel');
     panel.classList.toggle('collapsed');
