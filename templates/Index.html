@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Collapsible Left Section -->
+        <div class="left-panel collapsed">
+            <button class="collapse-btn" onclick="toggleLeftPanel()">☰</button>
+            <div class="left-content">
+                <ul>
+                    <li><a href="#" onclick="updateMainContent('Point 1')">Point 1</a></li>
+                    <li><a href="#" onclick="updateMainContent('Point 2')">Point 2</a></li>
+                    <li><a href="#" onclick="updateMainContent('Point 3')">Point 3</a></li>
+                    <li><a href="#" onclick="updateMainContent('Point 4')">Point 4</a></li>
+                    <li><a href="#" onclick="updateMainContent('Point 5')">Point 5</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Display Area -->
+        <div class="main-content">
+            <p id="main-text">Click a point or tile to display information here.</p>
+        </div>
+
+        <!-- Collapsible Right Tile Section -->
+        <div class="right-panel collapsed">
+            <button class="collapse-btn" onclick="toggleRightPanel()">↔</button>
+            <ul id="tile-list">
+                <li>
+                    <a href="#" onclick="updateMainContent('Tile 1 Info')">
+                        <span class="tile-name">Tile 1</span>
+                    </a>
+                    <input type="text" class="tile-name-input" value="Tile 1" onchange="updateTileName(this)">
+                    <input type="number" class="tile-order" value="1" onchange="reorderTiles()">
+                </li>
+                <li>
+                    <a href="#" onclick="updateMainContent('Tile 2 Info')">
+                        <span class="tile-name">Tile 2</span>
+                    </a>
+                    <input type="text" class="tile-name-input" value="Tile 2" onchange="updateTileName(this)">
+                    <input type="number" class="tile-order" value="2" onchange="reorderTiles()">
+                </li>
+                <li>
+                    <a href="#" onclick="updateMainContent('Tile 3 Info')">
+                        <span class="tile-name">Tile 3</span>
+                    </a>
+                    <input type="text" class="tile-name-input" value="Tile 3" onchange="updateTileName(this)">
+                    <input type="number" class="tile-order" value="3" onchange="reorderTiles()">
+                </li>
+                <li>
+                    <a href="#" onclick="updateMainContent('Tile 4 Info')">
+                        <span class="tile-name">Tile 4</span>
+                    </a>
+                    <input type="text" class="tile-name-input" value="Tile 4" onchange="updateTileName(this)">
+                    <input type="number" class="tile-order" value="4" onchange="reorderTiles()">
+                </li>
+                <li>
+                    <a href="#" onclick="updateMainContent('Tile 5 Info')">
+                        <span class="tile-name">Tile 5</span>
+                    </a>
+                    <input type="text" class="tile-name-input" value="Tile 5" onchange="updateTileName(this)">
+                    <input type="number" class="tile-order" value="5" onchange="reorderTiles()">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function updateMainContent(content) {
+            document.getElementById('main-text').innerText = content;
+        }
+
+        function toggleLeftPanel() {
+            const panel = document.querySelector('.left-panel');
+            panel.classList.toggle('collapsed');
+        }
+
+        function toggleRightPanel() {
+            const panel = document.querySelector('.right-panel');
+            const isCollapsed = panel.classList.toggle('collapsed');
+            
+            document.querySelectorAll('.tile-order, .tile-name-input').forEach(input => {
+                input.disabled = isCollapsed;
+            });
+
+            document.querySelectorAll('.tile-name').forEach(nameElement => {
+                const input = nameElement.nextElementSibling;
+                nameElement.innerText = isCollapsed ? input.value.charAt(0) : input.value;
+            });
+        }
+
+        function reorderTiles() {
+            const tiles = Array.from(document.querySelectorAll('#tile-list li'));
+            tiles.sort((a, b) => {
+                const aOrder = parseInt(a.querySelector('.tile-order').value);
+                const bOrder = parseInt(b.querySelector('.tile-order').value);
+                return bOrder - aOrder;
+            });
+            const tileList = document.getElementById('tile-list');
+            tiles.forEach(tile => tileList.appendChild(tile));
+        }
+
+        function updateTileName(input) {
+            const tileNameSpan = input.previousElementSibling;
+            tileNameSpan.innerText = input.value;
+        }
+    </script>
+
+</body>
+</html>
