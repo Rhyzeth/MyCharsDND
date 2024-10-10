@@ -1,1 +1,13 @@
 /.venv/
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+
+# Ignore environment variable files
+.env
+
+# Ignore SQLite databases
+*.db
+
+# Ignore other sensitive files
+config.py  # If you don't want to track this file at all
