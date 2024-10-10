@@ -4,7 +4,7 @@ __pycache__/
 *.py[cod]
 
 # Ignore environment variable files
-.env
+data.env
 
 # Ignore SQLite databases
 *.db

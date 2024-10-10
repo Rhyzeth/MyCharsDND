@@ -1,3 +1,7 @@
 # To ensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
 flask==3.0.1
-gunicorn==21.2.0
+Flask==2.3.3  # or your desired Flask version
+Flask-SQLAlchemy==2.5.1  # For ORM support with SQLite
+python-dotenv==1.0.0  # To load environment variables from a .env file
+pytest==7.2.1  # For testing your application
+flask-testing==0.8.1  # For additional testing utilities in Flask

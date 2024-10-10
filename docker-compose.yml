@@ -1,10 +1,15 @@
-version: '3.4'
-
 services:
-  dnd:
-    image: dnd
+  flask-server:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     ports:
-      - 5000:5000
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+    volumes:
+      - .:/app  # Mount current directory
+      - db_data:/app/db  # Persist SQLite database
+
+volumes:
+  db_data:

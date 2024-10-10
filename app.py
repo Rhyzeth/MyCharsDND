@@ -1,7 +1,15 @@
 from flask import Flask, request, jsonify
 import sqlite3  # or use another database driver such as psycopg2 for PostgreSQL
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Flask app setup
 app = Flask(__name__)
+config_name = os.getenv('FLASK_ENV', 'development')
+app.config.from_object(config[config_name])
 
 # Connect to your SQL database
 def query_database(point):
