@@ -8,8 +8,8 @@ services:
     environment:
       FLASK_ENV: development
     volumes:
-      - .:/app  # Mount current directory to keep code in sync
-      - db_data:/app/db  # Persist SQLite database in the 'db' folder
+      - .:/app  # Mount the current directory into the container
+      - ./db:/app/db  # Ensure the database directory is mounted properly
 
 volumes:
   db_data:

@@ -29,6 +29,10 @@ def get_data():
     if not table_name:
         return jsonify({"error": "Invalid table name"}), 400
 
+    # Validate if the table name exists in the database schema
+    if not validate_table_name(table_name):
+        return jsonify({"error": f"Table '{table_name}' does not exist"}), 404
+
     # Query the database dynamically
     rows = query_table(table_name)
     if rows is not None:
@@ -39,7 +43,7 @@ def get_data():
 # Function to query any table by name and get the first 5 rows
 def query_table(table_name):
     try:
-        # Build a dynamic SQL query to fetch the first 5 rows
+        # Build a dynamic SQL query to fetch the first 5 rows safely
         query = text(f"SELECT * FROM {table_name} LIMIT 5")
         result = db.engine.execute(query).fetchall()
         
@@ -53,6 +57,16 @@ def query_table(table_name):
     except Exception as e:
         print(f"An error occurred while querying the table '{table_name}': {e}")
         return None
+
+# Function to validate if the table name exists in the database
+def validate_table_name(table_name):
+    try:
+        # Fetch the list of tables in the database
+        tables = db.engine.table_names()
+        return table_name in tables
+    except Exception as e:
+        print(f"An error occurred while validating the table name '{table_name}': {e}")
+        return False
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
