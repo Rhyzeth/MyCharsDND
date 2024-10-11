@@ -30,21 +30,36 @@ function fetchData() {
 }
 
 function sendPointToServer(point) {
-    currentPoint = point;
-    currentPage = 1;
-    fetchData();
+    fetch('/get_data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ point: point }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.info) {
+            displayData(data.info);
+        } else {
+            document.getElementById('main-text').innerText = data.error;
+        }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
-function updateDisplay(results) {
+function displayData(data) {
     const mainText = document.getElementById('main-text');
-    mainText.innerHTML = '';
+    mainText.innerHTML = ''; // Clear previous content
 
-    results.forEach((result, index) => {
-        const entry = document.createElement('div');
-        entry.textContent = `${index + 1}. ${result}`;
-        mainText.appendChild(entry);
+    data.forEach((row, index) => {
+        const rowElement = document.createElement('div');
+        rowElement.classList.add('data-row');
+        rowElement.innerText = `Row ${index + 1}: ${JSON.stringify(row)}`;
+        mainText.appendChild(rowElement);
     });
 }
+
 
 function updatePaginationInfo() {
     document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
