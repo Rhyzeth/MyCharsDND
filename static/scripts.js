@@ -1,16 +1,67 @@
-function sendPointToServer(point) {
+let currentPage = 1;
+let totalPages = 1;
+let currentPoint = '';
+
+function fetchData() {
+    const searchQuery = document.getElementById('search-input').value;
+
     fetch('/get_data', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ point: point }),
+        body: JSON.stringify({
+            point: currentPoint,
+            page: currentPage,
+            search: searchQuery
+        }),
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('main-text').innerText = data.info;
+        if (data.results) {
+            updateDisplay(data.results);
+            totalPages = data.total_pages;
+            updatePaginationInfo();
+        } else {
+            document.getElementById('main-text').innerText = data.error;
+        }
     })
     .catch(error => console.error('Error:', error));
+}
+
+function sendPointToServer(point) {
+    currentPoint = point;
+    currentPage = 1;
+    fetchData();
+}
+
+function updateDisplay(results) {
+    const mainText = document.getElementById('main-text');
+    mainText.innerHTML = '';
+
+    results.forEach((result, index) => {
+        const entry = document.createElement('div');
+        entry.textContent = `${index + 1}. ${result}`;
+        mainText.appendChild(entry);
+    });
+}
+
+function updatePaginationInfo() {
+    document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+}
+
+function nextPage() {
+    if (currentPage < totalPages) {
+        currentPage++;
+        fetchData();
+    }
+}
+
+function previousPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        fetchData();
+    }
 }
 
 function updateMainContent(content) {

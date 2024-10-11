@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Web Page</title>
     <link rel="stylesheet" href="/static/Style.css">
-    <script src="/static/scripts.js"> defer></script>
+    <script src="/static/scripts.js" defer></script>
 </head>
 <body>
 
@@ -15,18 +15,30 @@
             <button class="collapse-btn" onclick="toggleLeftPanel()">☰</button>
             <div class="left-content">
                 <ul>
-                    <li><a href="#" onclick="sendPointToServer('Advantage')">Advantage</a></li>
-                    <li><a href="#" onclick="sendPointToServer('Disadvantage')">Disadvantage</a></li>
-                    <li><a href="#" onclick="sendPointToServer('BonusActions')">BonusActions</a></li>
-                    <li><a href="#" onclick="sendPointToServer('Concentration')">Concentration</a></li>
-                    <li><a href="#" onclick="sendPointToServer('Initiative')">Initiative</a></li>
+                    <li><a href="#" onclick="sendPointToServer('races')">Races</a></li>
+                    <li><a href="#" onclick="sendPointToServer('classes')">Classes</a></li>
+                    <li><a href="#" onclick="sendPointToServer('backgrounds')">Backgrounds</a></li>
+                    <li><a href="#" onclick="sendPointToServer('feats')">Feats</a></li>
+                    <li><a href="#" onclick="sendPointToServer('conditions')">Conditions</a></li>
+                    <li><a href="#" onclick="sendPointToServer('spells')">Spells</a></li>
+                    <li><a href="#" onclick="sendPointToServer('magic_items')">Magic Items</a></li>
+                    <li><a href="#" onclick="sendPointToServer('weapons')">Weapons</a></li>
+                    <li><a href="#" onclick="sendPointToServer('armor')">Armor</a></li>
+                    <li><a href="#" onclick="sendPointToServer('monsters')">Monsters</a></li>
+                    <li><a href="#" onclick="sendPointToServer('planes')">Planes</a></li>
                 </ul>
             </div>
         </div>
 
         <!-- Main Display Area -->
         <div class="main-content">
+            <input type="text" id="search-input" placeholder="Search..." oninput="fetchData()">
             <p id="main-text">Click a point or tile to display information here.</p>
+            <div id="pagination-controls">
+                <button onclick="previousPage()">Previous</button>
+                <span id="page-info">Page 1</span>
+                <button onclick="nextPage()">Next</button>
+            </div>
         </div>
 
         <!-- Collapsible Right Tile Section -->
