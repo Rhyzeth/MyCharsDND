@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 from config import config
 from flask_sqlalchemy import SQLAlchemy
-from flask import render_template
 import os
+from sqlalchemy import text
 
 # Load environment variables
 load_dotenv()
@@ -15,56 +15,44 @@ config_name = os.getenv('FLASK_ENV', 'development')
 app.config.from_object(config[config_name])
 db = SQLAlchemy(app)
 
-# Define the model
-class YourTable(db.Model):
-    __tablename__ = 'your_table'
-    
-    id = db.Column(db.Integer, primary_key=True)
-    point_name = db.Column(db.String(100), nullable=False)
-    info = db.Column(db.String(500), nullable=False)
+# Route to render the index.html page
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-    def __repr__(self):
-        return f"<YourTable {self.point_name}>"
-
-# Query database with pagination and optional search
-def query_database(point, page, per_page, search_query=None):
-    try:
-        query = YourTable.query.filter_by(point_name=point)
-        
-        if search_query:
-            # Apply search filter based on 'info' field
-            query = query.filter(YourTable.info.ilike(f"%{search_query}%"))
-        
-        paginated = query.paginate(page, per_page, False)
-        results = [result.info for result in paginated.items]
-        total_pages = paginated.pages
-        
-        return results, total_pages
-    except Exception as e:
-        print(f"An error occurred while querying the database: {e}")
-        return [], 0
-
-# Handle the POST request for getting paginated data
+# Handle the POST request
 @app.route('/get_data', methods=['POST'])
 def get_data():
     data = request.get_json()
-    point = data.get('point')
-    page = data.get('page', 1)
-    search_query = data.get('search', '')
-    per_page = 10  # Number of items per page
+    table_name = data.get('point')  # The frontend sends the table name
     
-    if not point:
-        return jsonify({"error": "Invalid point"}), 400
-    
-    # Query the database
-    results, total_pages = query_database(point, page, per_page, search_query)
-    
-    if results:
-        return jsonify({"results": results, "total_pages": total_pages})
+    if not table_name:
+        return jsonify({"error": "Invalid table name"}), 400
+
+    # Query the database dynamically
+    rows = query_table(table_name)
+    if rows is not None:
+        return jsonify({"info": rows})
     else:
-        return jsonify({"error": "No data found for this point."}), 404
+        return jsonify({"error": f"No data found for table '{table_name}'"}), 404
+
+# Function to query any table by name and get the first 5 rows
+def query_table(table_name):
+    try:
+        # Build a dynamic SQL query to fetch the first 5 rows
+        query = text(f"SELECT * FROM {table_name} LIMIT 5")
+        result = db.engine.execute(query).fetchall()
+        
+        # Convert result into a list of dictionaries
+        if result:
+            columns = result[0].keys()  # Get column names
+            rows = [dict(zip(columns, row)) for row in result]
+            return rows
+        else:
+            return None
+    except Exception as e:
+        print(f"An error occurred while querying the table '{table_name}': {e}")
+        return None
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()  # This creates tables if they don't already exist
     app.run(debug=True, host='0.0.0.0')
