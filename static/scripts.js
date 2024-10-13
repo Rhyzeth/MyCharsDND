@@ -29,13 +29,13 @@ function fetchData() {
     .catch(error => console.error('Error:', error));
 }
 
-function sendPointToServer(point) {
+function sendTableToServer(table_name) {
     fetch('/get_data', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ point: point }),
+        body: JSON.stringify({ table_name: table_name }),
     })
     .then(response => response.json())
     .then(data => {
