@@ -48,10 +48,11 @@ function sendTableToServer(table_name) {
     })
     .then(response => response.json())
     .then(data => {
+        console.log("Response from backend:", data); // Add this to inspect the response
         if (data.info) {
             displayData(data.info);
         } else {
-            document.getElementById('main-text').innerText = data.error;
+            document.getElementById('main-text').innerText = data.error || 'An unknown error occurred';
         }
     })
     .catch(error => {
@@ -59,6 +60,7 @@ function sendTableToServer(table_name) {
         document.getElementById('main-text').innerText = 'An error occurred. Please try again.';
     });
 }
+
 
 function displayData(data) {
     const mainText = document.getElementById('main-text');

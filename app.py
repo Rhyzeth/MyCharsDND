@@ -23,19 +23,31 @@ db.init_app(app)
 def home():
     return render_template('index.html')
 
+@app.route('/get_data', methods=['POST'])
 def table_details():
     try:
         # Get JSON data from the POST request
         data = request.get_json()
+
+        # If JSON data is not received, log an error and return response
+        if data is None:
+            return jsonify({"error": "No JSON data received"}), 400
+
+        # Extract table_name from the received JSON data
         table_name = data.get('table_name')
 
         if not table_name:
             return jsonify({"error": "Table name is required"}), 400
 
-        # For now, return the table name (replace this with actual table querying logic)
+        # Log the received table_name for debugging purposes
+        print(f"Received table_name: {table_name}")
+
+        # Return a success response with the received table name
         return jsonify({"info": f"Received table name: {table_name}"}), 200
 
     except Exception as e:
+        # If any error occurs, log the error and return a 500 response
+        print(f"Error: {str(e)}")
         return jsonify({"error": str(e)}), 500
     
 if __name__ == '__main__':
