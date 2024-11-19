@@ -1,0 +1,120 @@
+extends layout
+block content
+    body.p-0.m-0.border-0.bd-example.border-0
+        section.container.mt-4
+            .row
+                //- NFC East
+                .col-md-3.mb-4 
+                    h3.text-light NFC East
+                    .team-container
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Dallas Cowboys')")
+                            img.img-fluid.mb-2(src="images/NFC_East/Dallas_Cowboys_logo.svg" alt="Dallas Cowboys")
+                            p Dallas Cowboys
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('New York Giants')")
+                            img.img-fluid.mb-2(src="images/NFC_East/New_York_Giants_logo.svg" alt="New York Giants")
+                            p New York Giants
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Philadelphia Eagles')")
+                            img.img-fluid.mb-2(src="images/NFC_East/Philadelphia_Eagles_logo.svg" alt="Philadelphia Eagles")
+                            p Philadelphia Eagles
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Washington Commanders')")
+                            img.img-fluid.mb-2(src="images/NFC_East/Washington_Commanders_logo.svg" alt="Washington Commanders")
+                            p Washington Commanders
+
+                //- NFC North
+                .col-md-3.mb-4
+                    h3.text-light NFC North
+                    .team-container
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Chicago Bears')")
+                            img.img-fluid.mb-2(src="images/NFC_North/Chicago_Bears_logo.svg" alt="Chicago Bears")
+                            p Chicago Bears
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Detroit Lions')")
+                            img.img-fluid.mb-2(src="images/NFC_North/Detroit_Lions_logo.svg" alt="Detroit Lions")
+                            p Detroit Lions
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Green Bay Packers')")
+                            img.img-fluid.mb-2(src="images/NFC_North/Green_Bay_Packers_logo.svg" alt="Green Bay Packers")
+                            p Green Bay Packers
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Minnesota Vikings')")
+                            img.img-fluid.mb-2(src="images/NFC_North/Minnesota_Vikings_logo.svg" alt="Minnesota Vikings")
+                            p Minnesota Vikings
+
+                //- NFC South
+                .col-md-3.mb-4
+                    h3.text-light NFC South
+                    .team-container
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Atlanta Falcons')")
+                            img.img-fluid.mb-2(src="images/NFC_South/Atlanta_Falcons_logo.svg" alt="Atlanta Falcons")
+                            p Atlanta Falcons
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Carolina Panthers')")
+                            img.img-fluid.mb-2(src="images/NFC_South/Carolina_Panthers_logo.svg" alt="Carolina Panthers")
+                            p Carolina Panthers
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('New Orleans Saints')")
+                            img.img-fluid.mb-2(src="images/NFC_South/New_Orleans_Saints_logo.svg" alt="New Orleans Saints")
+                            p New Orleans Saints
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Tampa Bay Buccaneers')")
+                            img.img-fluid.mb-2(src="images/NFC_South/Tampa_Bay_Buccaneers_logo.svg" alt="Tampa Bay Buccaneers")
+                            p Tampa Bay Buccaneers
+
+                //- NFC West
+                .col-md-3.mb-4
+                    h3.text-light NFC West
+                    .team-container
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Arizona Cardinals')")
+                            img.img-fluid.mb-2(src="images/NFC_West/Arizona_Cardinals_logo.svg" alt="Arizona Cardinals")
+                            p Arizona Cardinals
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Los Angeles Rams')")
+                            img.img-fluid.mb-2(src="images/NFC_West/Los_Angeles_Rams_logo.svg" alt="Los Angeles Rams")
+                            p Los Angeles Rams
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('San Francisco 49ers')")
+                            img.img-fluid.mb-2(src="images/NFC_West/San_Francisco_49ers_logo.svg" alt="San Francisco 49ers")
+                            p San Francisco 49ers
+                        button.team-box.text-center(
+                            data-bs-toggle="modal" 
+                            data-bs-target="#teamModal" 
+                            onclick="loadTeamRoster('Seattle Seahawks')")
+                            img.img-fluid.mb-2(src="images/NFC_West/Seattle_Seahawks_logo.svg" alt="Seattle Seahawks")
+                            p Seattle Seahawks
