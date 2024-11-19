@@ -2,4 +2,3 @@ data.env
 *.db
 /templates/Test.html
 myExpressApp/node_modules
-myExpressApp/package-lock.json
