@@ -18,4 +18,16 @@ router.get('/matchups', (req, res) => {
   res.render('matchups', { title: 'Matchups' });
 });
 
+router.get('/AFCTeams', (req, res) => {
+  res.render('AFCTeams', { title: 'AFCTeams' });
+});
+
+router.get('/NFCTeams', (req, res) => {
+  res.render('NFCTeams', { title: 'NFCTeams' });
+});
+
+router.get('/PowerRankings', (req, res) => {
+  res.render('PowerRankings', { title: 'PowerRankings' });
+});
+
 module.exports = router;

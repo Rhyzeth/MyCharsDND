@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFC Teams</title>
+    <link rel="stylesheet" href="/my-express-app/src/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/my-express-app/src/js/scripts.js"></script>
+    <style>
+        body {
+            background-color: #212529;
+            color: white;
+            padding: 0;
+            margin: 0;
+        }
+
+        .team-container {
+            padding-bottom: 150px; /* Padding to prevent overlap with the logo */
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.6) !important; /* Semi-transparent background for content areas */
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        section.container {
+            margin-top: 20px; /* Adds space between navbar and team boxes */
+        }
+    </style>
+</head>
+<body class="p-0 m-0 border-0 bd-example m-0 border-0" data-template="index">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="home.html">Fantasy Betting</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="news.html">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="matchups.html">Matchups</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Teams
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="AFCTeams.html">AFC</a></li>
+                            <li><a class="dropdown-item" href="NFCTeams.html">NFC</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="PowerRankings.html">Power Rankings</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2 bg-light text-dark border-dark" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- AFC Teams Section -->
+    <section class="container mt-4">
+        <div class="row">
+            <!-- AFC East -->
+            <div class="col-md-3 mb-4">
+                <h3 class="text-light">AFC East</h3>
+                <div class="team-container">
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Buffalo Bills')">
+                        <img src="/my-express-app/src/Images/AFC_East/Buffalo_Bills_logo.svg" alt="Buffalo Bills" class="img-fluid mb-2">
+                        <p>Buffalo Bills</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Miami Dolphins')">
+                        <img src="/my-express-app/src/Images/AFC_East/Miami_Dolphins_logo.svg" alt="Miami Dolphins" class="img-fluid mb-2">
+                        <p>Miami Dolphins</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('New England Patriots')">
+                        <img src="/my-express-app/src/Images/AFC_East/New_England_Patriots_logo.svg" alt="New England Patriots" class="img-fluid mb-2">
+                        <p>New England Patriots</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('New York Jets')">
+                        <img src="/my-express-app/src/Images/AFC_East/New_York_Jets_logo.svg" alt="New York Jets" class="img-fluid mb-2">
+                        <p>New York Jets</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- AFC North -->
+            <div class="col-md-3 mb-4">
+                <h3 class="text-light">AFC North</h3>
+                <div class="team-container">
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Baltimore Ravens')">
+                        <img src="/my-express-app/src/Images/AFC_North/Baltimore_Ravens_logo.svg" alt="Baltimore Ravens" class="img-fluid mb-2">
+                        <p>Baltimore Ravens</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Cincinnati Bengals')">
+                        <img src="/my-express-app/src/Images/AFC_North/Cincinnati_Bengals_logo.svg" alt="Cincinnati Bengals" class="img-fluid mb-2">
+                        <p>Cincinnati Bengals</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Cleveland Browns')">
+                        <img src="/my-express-app/src/Images/AFC_North/Cleveland_Browns_logo.svg" alt="Cleveland Browns" class="img-fluid mb-2">
+                        <p>Cleveland Browns</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Pittsburgh Steelers')">
+                        <img src="/my-express-app/src/Images/AFC_North/Pittsburgh_Steelers_logo.svg" alt="Pittsburgh Steelers" class="img-fluid mb-2">
+                        <p>Pittsburgh Steelers</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- AFC South -->
+            <div class="col-md-3 mb-4">
+                <h3 class="text-light">AFC South</h3>
+                <div class="team-container">
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Houston Texans')">
+                        <img src="/my-express-app/src/Images/AFC_South/Houston_Texans_logo.svg" alt="Houston Texans" class="img-fluid mb-2">
+                        <p>Houston Texans</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Indianapolis Colts')">
+                        <img src="/my-express-app/src/Images/AFC_South/Indianapolis_Colts_logo.svg" alt="Indianapolis Colts" class="img-fluid mb-2">
+                        <p>Indianapolis Colts</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Jacksonville Jaguars')">
+                        <img src="/my-express-app/src/Images/AFC_South/Jacksonville_Jaguars_logo.svg" alt="Jacksonville Jaguars" class="img-fluid mb-2">
+                        <p>Jacksonville Jaguars</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Tennessee Titans')">
+                        <img src="/my-express-app/src/Images/AFC_South/Tennessee_Titans_logo.svg" alt="Tennessee Titans" class="img-fluid mb-2">
+                        <p>Tennessee Titans</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- AFC West -->
+            <div class="col-md-3 mb-4">
+                <h3 class="text-light">AFC West</h3>
+                <div class="team-container">
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Denver Broncos')">
+                        <img src="/my-express-app/src/Images/AFC_West/Denver_Broncos_logo.svg" alt="Denver Broncos" class="img-fluid mb-2">
+                        <p>Denver Broncos</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Kansas City Chiefs')">
+                        <img src="/my-express-app/src/Images/AFC_West/Kansas_City_Chiefs_logo.svg" alt="Kansas City Chiefs" class="img-fluid mb-2">
+                        <p>Kansas City Chiefs</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Las Vegas Raiders')">
+                        <img src="/my-express-app/src/Images/AFC_West/Las_Vegas_Raiders_logo.svg" alt="Las Vegas Raiders" class="img-fluid mb-2">
+                        <p>Las Vegas Raiders</p>
+                    </button>
+                    <button class="team-box text-center" data-bs-toggle="modal" data-bs-target="#teamModal" onclick="loadTeamRoster('Los Angeles Chargers')">
+                        <img src="/my-express-app/src/Images/AFC_West/Los_Angeles_Chargers_logo.svg" alt="Los Angeles Chargers" class="img-fluid mb-2">
+                        <p>Los Angeles Chargers</p>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="teamModal" tabindex="-1" aria-labelledby="teamModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="teamModalLabel">Team Roster</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="teamRosterContent">
+                        <!-- Content will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+            <script>
+    function loadTeamRoster(teamName) {
+        if (teamName === 'Buffalo Bills') {
+            document.getElementById('teamRosterContent').innerHTML = `
+                <h4>Buffalo Bills - 2023 Stats</h4>
+                <ul>
+                    <li><strong>Record:</strong> 13-3</li>
+                    <li><strong>Quarterback:</strong> Josh Allen</li>
+                    <li><strong>Leading Receiver:</strong> Stefon Diggs</li>
+                    <li><strong>Leading Rusher:</strong> James Cook</li>
+                    <li><strong>Head Coach:</strong> Sean McDermott</li>
+                    <li><strong>Defensive Leader:</strong> Matt Milano</li>
+                </ul>
+            `;
+        } else if (teamName === 'Miami Dolphins') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'New England Patriots') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'New York Jets') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Baltimore Ravens') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Cincinnati Bengals') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Cleveland Browns') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Pittsburgh Steelers') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Houston Texans') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Indianapolis Colts') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Jacksonville Jaguars') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Tennessee Titans') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Denver Broncos') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Kansas City Chiefs') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Las Vegas Raiders') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        } else if (teamName === 'Los Angeles Chargers') {
+            document.getElementById('teamRosterContent').innerHTML = ``;
+        }
+    }
+</script>
+
+    
