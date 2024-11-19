@@ -1,8 +1,10 @@
 extends layout 
+
 block append head 
   link(rel='stylesheet', href='/stylesheets/cover.css')
+  link(rel="canonical", href="https://getbootstrap.com/docs/5.3/examples/cover/")
   link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@docsearch/css@3")
-    
+
 block header 
   .d-flex.h-100.text-center.text-bg-dark
     .cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
@@ -10,13 +12,13 @@ block header
         div
           h3.float-md-start.mb-0 Fantasy Betting
           nav.nav.nav-masthead.justify-content-center.float-md-end
-            a.nav-link.fw-bold.py-1.px-0(aria-current="page", href="index.html") Home
-            a.nav-link.fw-bold.py-1.px-0(href="news.html") News
-            a.nav-link.fw-bold.py-1.px-0(href="matchups.html") Matchups
+            a.nav-link.fw-bold.py-1.px-0(aria-current="page", href="/") Home
+            a.nav-link.fw-bold.py-1.px-0(href="/news") News
+            a.nav-link.fw-bold.py-1.px-0(href="/matchups") Matchups
       main.px-3
         h1(style="backdrop-filter: blur(7px);") All Your Fantasy Needs
         p.lead(style="backdrop-filter: blur(7px);") Fantasy Betting uses our own custom algorithm to allow you to make the most informed decisions about your players.
         p.lead
-          a.btn.btn-lg.btn-light.fw-bold.border-white.bg-white(href="news.html") Get Started
+          a.btn.btn-lg.btn-light.fw-bold.border-white.bg-white(href="/") Get Started
       footer.mt-auto.text-white-50
         p
