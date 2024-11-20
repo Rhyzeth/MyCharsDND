@@ -1,4 +1,4 @@
 *.env
 *.db
-/templates/Test.html
+/templates/
 /myExpressApp/node_modules

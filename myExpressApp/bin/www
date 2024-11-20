@@ -88,3 +88,6 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+// Log server startup message
+console.log(`Hosted on http://localhost:${port}/`);
