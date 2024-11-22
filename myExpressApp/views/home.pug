@@ -1,4 +1,24 @@
 extends layout 
 
 block content 
-    
+    .d-flex.flex-column.flex-shrink-0.bg-body-tertiary(style="width: 4.5rem;")
+        a.d-block.p-3.link-body-emphasis.text-decoration-none(title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right" href="/")
+            img(src="/images/R_logo.svg" alt="Temporary Logo" width="25" height="25")
+            span.visually-hidden Icon-Only
+        
+        ul.nav.nav-pills.nav-flush.flex-column.mb-auto.text-center
+            li.nav-item 
+                a.nav-link.active.py-3.border-bottom.rounded-0(href="#" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right")
+                img(src="/images/R_logo.svg" alt="Temporary Logo" width="25" height="25" aria-label="Home", href="#home")
+            li
+                a.nav-link.py-3.border-bottom.rounded-0(href="#" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right")
+                img(src="/images/R_logo.svg" alt="Temporary Logo" width="25" height="25" aria-label="Home", href="#home")
+            li
+                a.nav-link.py-3.border-bottom.rounded-0(href="#" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right")
+                img(src="/images/R_logo.svg" alt="Temporary Logo" width="25" height="25" aria-label="Home", href="#home")
+            li
+                a.nav-link.py-3.border-bottom.rounded-0(href="#" title="Products" data-bs-toggle="tooltip" data-bs-placement="right")
+                img(src="/images/R_logo.svg" alt="Temporary Logo" width="25" height="25" aria-label="Home", href="#home")
+            li
+                a.nav-link.py-3.border-bottom.rounded-0(href="#" title="Customers" data-bs-toggle="tooltip" data-bs-placement="right")
+                img(src="/images/R_logo.svg" alt="Temporary Logo" width="25" height="25" aria-label="Home", href="#home")
